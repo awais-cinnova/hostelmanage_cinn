@@ -4,7 +4,7 @@ import Image from '../ui/image' // Assuming this is a valid image component
 
 const Search = ({ searchTerm, setSearchTerm , classname }) => {
   return (
-    <div className={`relative max-w-sm  h-full`}>
+    <div className="relative max-w-sm  h-[100%]">
       <Input    type="text" placeholder="Search..." className="h-[100%] pl-8 font-normal text-base leading-[120%] tracking-[-0.05em] border border-black/20"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}/>

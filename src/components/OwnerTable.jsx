@@ -66,7 +66,7 @@ export function TableDemo({host , setHost}) {
       setHost(hostelOwners.length)
   }, [setHost])
   return (
-    <div className="p-[22px] pb-[15px] w-full rounded-[12px] bg-[#FFFFFF] overflow-auto">
+    <div className="p-[22px] pb-[15px] w-full rounded-[12px] bg-[#FFFFFF] ">
       <Table className="table-auto w-full text-left  font-normal text-base leading-[120%] tracking-[-0.05em]">
         <TableHeader>
           <TableRow className="py-12 border-none">
