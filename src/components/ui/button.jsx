@@ -11,10 +11,10 @@ const buttonVariants = cva(
       variant: {
         default:
           "bg-[var(--primary-color)]",
-
-      },
+       },
       size: {
         default: "min-w-[34px] min-h-[34px]",
+        primarysize:"w-[175px] h-[48px] p-[12px] rounded-[12px] ",
       },
     },
     defaultVariants: {

@@ -9,6 +9,7 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { useEffect } from "react"
+
 const hostelOwners = [
   {
     name: "Emily Johnson",
