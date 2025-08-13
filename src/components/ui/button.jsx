@@ -11,6 +11,7 @@ const buttonVariants = cva(
       variant: {
         default:
           "bg-[var(--primary-color)]",
+         page:"w-[15px]" 
        },
       size: {
         default: "min-w-[34px] min-h-[34px]",

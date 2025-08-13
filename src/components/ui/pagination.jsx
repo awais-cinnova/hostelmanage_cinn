@@ -37,7 +37,7 @@ function PaginationContent({
 function PaginationItem({
   ...props
 }) {
-  return <li data-slot="pagination-item" {...props} />;
+  return <li className="  "  data-slot="pagination-item" {...props} />;
 }
 
 function PaginationLink({
@@ -52,7 +52,7 @@ function PaginationLink({
       data-slot="pagination-link"
       data-active={isActive}
       className={cn(buttonVariants({
-        variant: isActive ? "outline" : "ghost",
+        variant: isActive ? "page" : "ghost",
         size,
       }), className)}
       {...props} />

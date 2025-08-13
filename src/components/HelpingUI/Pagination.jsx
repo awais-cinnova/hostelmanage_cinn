@@ -8,31 +8,51 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination"
 
-export function PaginationDemo() {
+export function PaginationDemo({ totalItems, rowsPerPage, currentPage, setCurrentPage }) {
+  const totalPages = Math.ceil(totalItems / rowsPerPage);
+
   return (
-    <Pagination>
-      <PaginationContent>
+    <Pagination className="w-full flex justify-center items-center mt-2 border-t border-[#E5E7EB] ">
+      <PaginationContent className="flex w-full items-center justify-between mt-4">
+
         <PaginationItem>
-          <PaginationPrevious href="#" />
+          <PaginationPrevious href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              if (currentPage > 1) setCurrentPage(currentPage - 1);
+            }}
+          />
         </PaginationItem>
+
+        <div className="flex items-center gap-6">
+
+        {Array.from({ length: totalPages }, (_, i) => (
+          <PaginationItem key={i}>
+            <PaginationLink href="#"
+              isActive={currentPage === i + 1}
+              className={currentPage === i + 1 ? "  text-[var(--primary-color)] border-t-2 border-[var(--primary-color)] rounded-none "  : "text-black/70"}
+              onClick={(e) => {
+                e.preventDefault();
+                setCurrentPage(i + 1); // jump to clicked page
+              }}
+              >
+              {i + 1}
+            </PaginationLink>
+          </PaginationItem>
+        ))}
+        </div>
+
         <PaginationItem>
-          <PaginationLink href="#">1</PaginationLink>
+          <PaginationNext href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              if (currentPage < totalPages) setCurrentPage(currentPage + 1);
+            }}
+          />
         </PaginationItem>
-        <PaginationItem>
-          <PaginationLink href="#" isActive>
-            2
-          </PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink href="#">3</PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationEllipsis />
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationNext href="#" />
-        </PaginationItem>
+
       </PaginationContent>
     </Pagination>
-  )
+  );
 }
+export default PaginationDemo;
