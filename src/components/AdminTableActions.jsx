@@ -2,7 +2,7 @@ import React from 'react'
 import  Search  from './HelpingUI/Search';
 import { Button} from './ui/button';
 import Image from './ui/image';
-const OwnerTableActions = () => {
+const AdminTableActions = () => {
   return (
         <div className='flex items-end justify-center h-[100%] gap-2.5'>
           <Search/>
@@ -21,4 +21,4 @@ const OwnerTableActions = () => {
   )
 }
 
-export default OwnerTableActions
+export default AdminTableActions

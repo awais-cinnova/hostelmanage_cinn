@@ -9,6 +9,9 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { useEffect } from "react"
+import { Button } from "./ui/button";
+import Image from "./ui/image";
+import { useNavigate } from "react-router-dom";
 
 const hostelOwners = [
   {name: "Emily Johnson",email: "emily.johnson@cityhostels.com",phoneNumber: "+1 (415) 555-0198",hostelName: "Downtown City Hostel",},
@@ -22,7 +25,9 @@ const hostelOwners = [
 ]
 
 export function TableDemo({host , setHost , currentPage, rowsPerPage }) {
-    useEffect(() => {
+  const navigate = useNavigate();
+ 
+  useEffect(() => {
       setHost(hostelOwners.length)
   }, [setHost])
 
@@ -39,6 +44,7 @@ export function TableDemo({host , setHost , currentPage, rowsPerPage }) {
             <TableHead>Email</TableHead>
             <TableHead>Phone</TableHead>
             <TableHead>Hostel Name</TableHead>
+            <TableHead >Actions</TableHead> 
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -48,6 +54,16 @@ export function TableDemo({host , setHost , currentPage, rowsPerPage }) {
               <TableCell>{owner.email}</TableCell>
               <TableCell>{owner.phoneNumber}</TableCell>
               <TableCell>{owner.hostelName}</TableCell>
+              <TableCell className="text-right">
+
+              <Button
+                  variant="default"
+                  className="bg-transparent cursor-pointer"
+                  onClick={() => navigate(`/dashboard/owner/${index}`)}
+                >
+                  <Image src="detail-icon.svg" alt="View Details" className="w-6 h-6" />
+                </Button>    
+            </TableCell>
             </TableRow>
           ))}
         </TableBody>

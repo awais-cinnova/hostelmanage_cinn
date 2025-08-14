@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import Navbar from './Navbar/Navbar';
 import TableDemo from  './OwnerTable'
-import OwnerTableActions from './OwnerTableActions';
+import AdminTableActions from './AdminTableActions';
 import { PaginationDemo } from './HelpingUI/Pagination';
 export default function Dashboard() {
 
@@ -15,7 +15,7 @@ export default function Dashboard() {
         <Navbar/>
         <div className='flex items-center justify-between h-[48px]'>
         <div>Hostels({host})</div>
-        <OwnerTableActions/>
+        <AdminTableActions/>
         </div>
 
         <TableDemo host = {host}  setHost={setHost} currentPage={currentPage} rowsPerPage={rowsPerPage}></TableDemo>
