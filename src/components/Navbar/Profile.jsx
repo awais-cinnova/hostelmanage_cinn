@@ -16,7 +16,7 @@ function clicked() {
                 <h4 className=''>Admin</h4>
            </div>
             
-            <Image src="arrow-down.svg" alt="arrow-down" className='w-[18px] h-[18px]' onClick= {() =>{clicked()}} />
+            <Image src="/arrow-down.svg" alt="arrow-down" className='w-[18px] h-[18px]' onClick= {() =>{clicked()}} />
            
 
 

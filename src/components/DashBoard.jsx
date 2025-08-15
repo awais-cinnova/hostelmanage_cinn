@@ -8,7 +8,7 @@ export default function Dashboard() {
 
   const [host , setHost] = useState();
   const [currentPage, setCurrentPage] = useState(1);
-  const [rowsPerPage, setRowsPerPage] = useState(3);
+  const [rowsPerPage, setRowsPerPage] = useState(4);
   const [searchTerm, setSearchTerm] = useState("")
     return (
       <div className=" flex flex-col  bg-[#F7F7F7] gap-[24px] min-h-screen w-screen absolute box-border pt-4 pl-4 pr-2">
