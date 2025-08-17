@@ -12,7 +12,7 @@ export function PaginationDemo({ totalItems, rowsPerPage, currentPage, setCurren
   const totalPages = Math.ceil(totalItems / rowsPerPage);
 
   return (
-    <Pagination className="w-full flex justify-center items-center mt-2 border-t border-[#E5E7EB] ">
+    <Pagination className="w-full  flex justify-center items-center mt-2 border-t border-[#E5E7EB] ">
       <PaginationContent className="flex w-full items-center justify-between mt-4">
 
         <PaginationItem>

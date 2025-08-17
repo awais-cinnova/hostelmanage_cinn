@@ -7,7 +7,7 @@ import Profile from './Profile'
 const navlinks = [
   { label: "home", path: "/" , type: "internal"},
   { label: "dashboard", path: "/dashboard", type: "internal"},
-  { label: "resource", path: "/resource", type: "internal"},
+  { label: "hostel", path: "/hostel", type: "internal"},
   { label: "projects", path: "/dashboard", type: "internal"},
  //{ label: "schedule", path: "/dashboard", type: "internal"},
  // { label: "role&technologies", path: "/roles&tech", type: "internal"},
