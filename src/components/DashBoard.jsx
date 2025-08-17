@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import Navbar from './Navbar/Navbar';
-import TableDemo from  './OwnerTable'
+import TableDemo from  './AdminTable'
 import AdminTableActions from './AdminTableActions';
 import { PaginationDemo } from './HelpingUI/Pagination';
 export default function Dashboard() {
