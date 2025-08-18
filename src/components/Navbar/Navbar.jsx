@@ -4,31 +4,30 @@ import MobileMenu from './MobileMenu';
 import Logo from '../Logo'; 
 import {Button} from '../ui/button'
 import Profile from './Profile'
-const navlinks = [
-  { label: "home", path: "/" , type: "internal"},
-  { label: "dashboard", path: "/dashboard", type: "internal"},
-  { label: "hostel", path: "/dashboard/hostel/h1", type: "internal"},
-  { label: "projects", path: "/dashboard", type: "internal"},
- //{ label: "schedule", path: "/dashboard", type: "internal"},
- // { label: "role&technologies", path: "/roles&tech", type: "internal"},
- //{ label: "congiguration", path: "/configuration", type: "internal"},
- // { label: "reports", path: "/reports", type: "internal"},
- // { label: "utilization", path: "/utilization", type: "internal"},
- // { label: "forecasting", path: "/forrecasting", type: "internal"},
+import { useAuthStore } from '../../store/authStore'; 
 
+const adminLinks = [
+  { label: "Dashboard", path: "/dashboard", type: "internal" },
+  { label: "Manage Users", path: "/admin/users", type: "internal" },
+  { label: "Hostels", path: "/dashboard/hostels", type: "internal" },
 ];
 
-const Navbar = () => {
+const userLinks = [
+  { label: "Dashboard", path: "/dashboard", type: "internal" },
+];
+
+
+const Navbar = ({navlinks}) => {
   const [isOpen, setIsOpen] = useState(false);
   const closeMenu = () => setIsOpen(false);
-
+   const user = useAuthStore((state) => state.user); 
   return (
       
-    <nav className="flex items-center justify-between bg-[#000000]  text-[#f0f0f0]  h-[px] rounded-[12px] pl-[24px] pt-[13.5x]" >
+    <nav className="flex items-center justify-between bg-[#000000]  text-[#f0f0f0]  h-[60px] rounded-[12px] pl-[24px] " >
 
         <div className="flex items-center justify-start max-w-[70%] gap-[24px]">
             <Logo/>
-            <Links onClick={closeMenu} links = {navlinks} className = "w-screen hidden md:flex gap-[16px] item-start pl-[16px] pb-[20px] pr-[16px] pt-[20px]"/>
+            <Links onClick={closeMenu} links = {user.role ==="admin"?adminLinks:userLinks} className = "w-screen hidden md:flex gap-[16px] item-start pl-[16px] pb-[20px] pr-[16px] pt-[20px]"/>
         </div>
         
         <Profile/>

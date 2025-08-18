@@ -1,7 +1,7 @@
 import React from 'react'
-import  Search  from './HelpingUI/Search';
-import { Button} from './ui/button';
-import Image from './ui/image';
+import  Search  from '../HelpingUI/Search';
+import { Button} from '../ui/button';
+import Image from '../ui/image';
 const AdminTableActions = () => {
   return (
         <div className='flex items-end justify-center h-[100%] gap-2.5'>

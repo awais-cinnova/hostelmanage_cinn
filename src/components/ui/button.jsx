@@ -5,7 +5,7 @@ import { cva } from "class-variance-authority";
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "flex items-center justify-center rounded-full",
+  "flex items-center justify-center rounded-full cursor-pointer",
   {
     variants: {
       variant: {

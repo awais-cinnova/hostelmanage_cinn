@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export const Links = ({ onClick, className, links }) => (
+export const Links = ({ onClick, className, links=[] }) => (
   <div className={className}>
 {links.map(({ label, path, type }) =>
   type =="internal" ? (
