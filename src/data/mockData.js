@@ -51,11 +51,11 @@ const mockData = {
   ],
 
   hostels: [
-    { id: "h1", ownerId: "1", name: "Downtown City Hostel", location: "New York", totalRooms: 6 },
-    { id: "h2", ownerId: "1", name: "City View Flat", location: "New York", totalRooms: 3 },
-    { id: "h3", ownerId: "2", name: "Coastline Backpackers", location: "California Beach", totalRooms: 5 },
-    { id: "h4", ownerId: "1", name: "Burj al byt", location: "Dubai", totalRooms: 13 },
-    { id: "h5", ownerId: "3", name: "UrbanStay Hostel", location: "Los Angeles", totalRooms: 4 }
+    { id: "h1", ownerId: "1", name: "Downtown City Hostel", location: "New York", totalRooms: 25, protocol:"Bed" },
+    { id: "h2", ownerId: "1", name: "City View Flat", location: "New York", totalRooms: 15 ,protocol:"Room"},
+    { id: "h3", ownerId: "2", name: "Coastline Backpackers", location: "California Beach", totalRooms: 14 , protocol:"Bed/Room" },
+    { id: "h4", ownerId: "1", name: "Burj al byt", location: "Dubai", totalRooms: 22, protocol:"Room" },
+    { id: "h5", ownerId: "3", name: "UrbanStay Hostel", location: "Los Angeles", totalRooms: 10,protocol:"Bed/Room" }
   ],
 
 };

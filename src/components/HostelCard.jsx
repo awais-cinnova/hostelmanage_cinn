@@ -1,26 +1,20 @@
-import { Button } from "./ui/button";
-import Image from "./ui/image";
+import React from "react";
+import mockData from "../data/mockData";
+import { useNavigate } from "react-router-dom";
 const HostelCard = ({ hostel }) => {
+  const  navigate = useNavigate();
   return (
-    <div className="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow p-4 cursor-pointer">
+    <div className="border rounded-md p-4 shadow hover:shadow-lg transition cursor-pointer " onClick={() => navigate(`/hostel/${hostel.id}`)}>
       <img
         src={hostel.image || "/placeholder.jpg"}
         alt={hostel.name}
-        className="w-full h-40 object-cover rounded-md mb-4"
+        className="w-full h-40 object-cover rounded-md mb-3"
       />
       <h2 className="text-xl font-semibold">{hostel.name}</h2>
-      <p className="text-sm text-gray-500">{hostel.location}</p>
-
-      <div className="flex justify-between items-center mt-4 text-sm text-gray-600">
-        <span>Rooms: {hostel.totalRooms}</span>
-        <span>Occupied: {hostel.occupiedRooms}</span>
-      </div>
-
-      <div className="mt-4 flex justify-between">
-        <Button className="bg-transparent ml-auto"><Image src="/delete-icon.svg" className="cursor-pointer"></Image></Button>
-      </div>
+      <p className="text-gray-600">{hostel.location}</p>
+      <p className="mt-2">Total Rooms: {hostel.totalRooms}</p>
+      <p>Booking Protocol: {hostel.protocol}</p>
     </div>
   );
 };
-
 export default HostelCard;
