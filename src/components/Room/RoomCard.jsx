@@ -1,6 +1,7 @@
 // components/RoomCard.jsx
 import { Button } from "../ui/button"
 import Image from "../ui/image"
+
 const RoomCard = ({ room, type, hostel }) => {
   return (
     <div className="border p-4  rounded-lg shadow bg-[#F8B6000D]">
