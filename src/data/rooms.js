@@ -1,4 +1,4 @@
-export const rooms = [
+ const rooms = [
   // Hostel h1 – bed-based booking
   { id: "r1", hostelId: "h1", typeId: "t1", rooms: 10, bedsAvailable: 6, bedsOccupied: 4, roomsAvailable: 6, roomsOccupied: 4 },
   { id: "r2", hostelId: "h1", typeId: "t2", rooms: 5, bedsAvailable: 4, bedsOccupied: 6, roomsAvailable: 2, roomsOccupied: 3 },
@@ -29,3 +29,4 @@ export const rooms = [
   { id: "r19", hostelId: "h5", typeId: "t3", rooms: 3, bedsAvailable: 3, bedsOccupied: 6, roomsAvailable: 1, roomsOccupied: 2 },
   { id: "r20", hostelId: "h5", typeId: "t4", rooms: 2, bedsAvailable: 3, bedsOccupied: 5, roomsAvailable: 0, roomsOccupied: 2 }
 ];
+export default rooms;

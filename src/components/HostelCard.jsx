@@ -1,19 +1,14 @@
-import React from "react";
-import mockData from "../data/mockData";
-import { useNavigate } from "react-router-dom";
-const HostelCard = ({ hostel }) => {
-  const  navigate = useNavigate();
+const HostelCard = ({ hostel, className }) => {
   return (
-    <div className="border rounded-md p-4 shadow hover:shadow-lg transition cursor-pointer " onClick={() => navigate(`/hostel/${hostel.id}`)}>
-      <img
-        src={hostel.image || "/placeholder.jpg"}
-        alt={hostel.name}
-        className="w-full h-40 object-cover rounded-md mb-3"
-      />
-      <h2 className="text-xl font-semibold">{hostel.name}</h2>
-      <p className="text-gray-600">{hostel.location}</p>
-      <p className="mt-2">Total Rooms: {hostel.totalRooms}</p>
-      <p>Booking Protocol: {hostel.protocol}</p>
+    <div className={className}>
+      <img  src={hostel.image || "/hh.png"}  alt={hostel.name} className="w-[60%] max-h-[800px] object-fit rounded-md mb-3"/>
+    <div className="min-w-[250px] flex-1 flex flex-col items-center">
+        
+      <h2 className="text-2xl xl:text-5xl font-semibold">{hostel.name}</h2>
+      <p className="text-gray-600 xl:text-2xl">{hostel.location}</p>
+      <p className="xl:text-2xl">Total Rooms: {hostel.totalRooms}</p>
+      <p className="xl:text-2xl">Booking Protocol: {hostel.protocol}</p>
+    </div>
     </div>
   );
 };

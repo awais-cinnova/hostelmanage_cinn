@@ -1,8 +1,9 @@
-// components/HostelList.jsx
-import React from "react";
 import HostelCard from "./HostelCard";
+import { useNavigate } from "react-router-dom";
+
 
 const HostelList = ({ hostels = [] }) => {
+  const  navigate = useNavigate();
   if (!hostels.length) {
     return (
       <div className="text-center text-gray-500 mt-12">
@@ -14,7 +15,9 @@ const HostelList = ({ hostels = [] }) => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {hostels.map((hostel) => (
-        <HostelCard key={hostel.id} hostel={hostel} />
+         <div className="border rounded-md p-4 shadow hover:shadow-lg transition cursor-pointer " onClick={() => navigate(`/hostel/${hostel.id}`)}>
+            <HostelCard key={hostel.id} hostel={hostel} />
+        </div>
       ))}
     </div>
   );

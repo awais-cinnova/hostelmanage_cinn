@@ -24,7 +24,7 @@ function App() {
         <Route path="/dashboard/hostels"element={<HostelList hostels={mockData.hostels} />}  />
         <Route path="/unauthorized" element={<div className="p-4 text-red-600">Unauthorized Access</div>} />
         
-        <Route  path="/hostel/:id"  element={<ProtectedRoute><HostelDetail /></ProtectedRoute>}/>
+        <Route  path="/hostel/:hostelId"  element={<ProtectedRoute><HostelDetail /></ProtectedRoute>}/>
 
 
         <Route path="*" element={<Navigate to="/" />} /> 

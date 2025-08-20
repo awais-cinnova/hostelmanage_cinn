@@ -1,68 +1,34 @@
-// components/Hostel/HostelDetail.jsx
-import React from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import mockData from "../../data/mockData";
-import Navbar from "../Navbar/Navbar";
-import Image from "../ui/image";
-import { Button } from "../ui/button";
-
+import rooms from "../../data/rooms";
+import roomTypes from "../../data/roomtypes";
+import HostelCard from "../HostelCard";
+import RoomCard from "../Room/RoomCard";
 const HostelDetail = () => {
-  const { id } = useParams();
-  const navigate = useNavigate();
-
-  const hostel = mockData.hostels.find((h) => h.id === id);
-  const owner = mockData.owners.find((o) => o.id === hostel?.ownerId);
+  const { hostelId } = useParams();
+  const hostel = mockData.hostels.find((h) => h.id === hostelId);
 
   if (!hostel) {
-    return <div className="p-4 text-red-600">Hostel not found!</div>;
+    return <h2 className="text-center text-red-500">Hostel not found</h2>;
   }
 
+  const hostelRooms = rooms.filter((room) => room.hostelId === hostel.id);
+
   return (
-    <div className="min-h-screen w-full bg-[#F7F7F7] p-6">
-      <Navbar />
+    <div className="p-6 flex flex-col" >
 
-      {/* Back Button + Title */}
-      <div className="flex items-center gap-4 mb-6">
-        <Button onClick={() => navigate(-1)} className="bg-transparent hover:bg-gray-200">
-          <Image src="/back-icon.svg" alt="Back" className="w-5 h-5" />
-        </Button>
-        <h1 className="text-2xl font-semibold">Hostel Details</h1>
-      </div>
-
-      {/* Hostel Summary Card */}
-      <div className="flex justify-between gap-4 p-4 bg-white rounded-lg shadow-md">
-        
-        <div className="flex-1 p-4 max-w-72 bg-black max-h-[275px] rounded-md ">
-            <Image src="/hh.png" alt="hostel icon" className= "max-h-full object-fill" />
+        <div className="border rounded-md p-4 shadow hover:shadow-lg transition cursor-pointer" >
+            <HostelCard key={hostel.id} hostel={hostel} className="flex flex-col md:flex-row flex-1 gap-5 items-center"/>
         </div>
-        <div className="flex flex-1 flex-col gap-1">
-          <h2 className="text-xl font-bold text-gray-800">{hostel.name}</h2>
-          <p className="text-gray-600">📍 Location: {hostel.location}</p>
-          <p className="text-gray-700">🛏️ Total Rooms: {hostel.totalRooms}</p>
-          <p className="text-gray-700">🚪 Occupied Rooms: {hostel.occupiedRooms ?? "0"}</p>
-          <p className="text-gray-700 capitalize">📋 Protocol: {hostel.protocol}</p>
-        </div>
-      
-
-      {/* Owner Info Section */}
-      {owner && (
-        <div className="flex-1">
-          <h3 className="text-lg font-semibold text-gray-800 mb-2">Owner Information</h3>
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-gray-300 text-white rounded-full flex items-center justify-center font-semibold text-lg">
-              {owner.name
-                .split(" ")
-                .map((n) => n[0])
-                .join("")}
-            </div>
-            <div className="flex flex-col">
-              <p className="font-medium">{owner.name}</p>
-              <p className="text-sm text-gray-600">{owner.email}</p>
-              <p className="text-sm text-gray-600">{owner.phoneNumber}</p>
-            </div>
-          </div>
-        </div>
-      )}
+     
+      <h2 className="text-2xl font-semibold mb-3">Room Details</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {hostelRooms.map((room) => {
+                const type = roomTypes.find((t) => t.id === room.typeId);
+            return (
+                     <RoomCard key={room.id} room={room} type={type} hostel={hostel}/>
+            );
+        })}
       </div>
     </div>
   );
