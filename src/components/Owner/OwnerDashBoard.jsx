@@ -1,12 +1,14 @@
 import HostelList from "../HostelList";
-import mockData from "../../data/mockData";
-import { useAuthStore } from '../../store/authStore';
+import { useAuthStore } from "../../store/authStore";
+import { useDataStore } from "../../store/dataStore";
 import Navbar from "../Navbar/Navbar";
 
 const OwnerDashboard = () => {
   const user = useAuthStore((state) => state.user);
 
-  const ownerHostels = mockData.hostels.filter(
+  const hostels = useDataStore((state) => state.hostels);
+
+  const ownerHostels = hostels.filter(
     (hostel) => hostel.ownerId === user?.id
   );
 

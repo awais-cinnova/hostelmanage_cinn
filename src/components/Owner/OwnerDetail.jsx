@@ -3,7 +3,7 @@ import { useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import { Button } from "../ui/button";
 import Image from "../ui/image";
-import mockData from "../../data/mockData";
+import { useDataStore } from "../../store/dataStore"; 
 import Personal from "../../Bio/Personal";
 import Contact from "../../Bio/Contact";
 import OwnedProperties from "../../Bio/OwnedProperties";
@@ -14,10 +14,14 @@ const OwnerDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const owner = mockData.owners.find((o) => o.id === id && o.role === "owner");
+  const owners = useDataStore((state) => state.owners);
+  const hostels = useDataStore((state) => state.hostels);
+
+  const owner = owners.find((o) => o.id === id && o.role === "owner");
   if (!owner) return <div className="p-4">Owner not found!</div>;
 
-  const ownedProperties = mockData.hostels.filter((h) => h.ownerId === owner.id);
+  const ownedProperties = hostels.filter((h) => h.ownerId === owner.id);
+
   const indexOfLastProperty = currentPage * propertiesPerPage;
   const indexOfFirstProperty = indexOfLastProperty - propertiesPerPage;
   const currentProperties = ownedProperties.slice(indexOfFirstProperty, indexOfLastProperty);
@@ -34,19 +38,22 @@ const OwnerDetail = () => {
         <div className="text-xl font-bold">Owner Detail</div>
       </div>
 
-        {/* Main Layout Grid */}
-        <div className="flex flex-col md:flex-row gap-6">
-            {/* Left Column */}
-            <div className="flex flex-col gap-6 flex-[250%]">
-              <Personal owner={owner} />
-              <Contact owner={owner} />
-            </div>
+      {/* Main Layout Grid */}
+      <div className="flex flex-col md:flex-row gap-6">
+        {/* Left Column */}
+        <div className="flex flex-col gap-6 flex-[250%]">
+          <Personal owner={owner} />
+          <Contact owner={owner} />
+        </div>
 
-            {/* Right Column */}
-            <OwnedProperties
-              ownedProperties={ownedProperties} currentProperties={currentProperties}
-              currentPage={currentPage} setCurrentPage={setCurrentPage} propertiesPerPage={propertiesPerPage}
-            />
+        {/* Right Column */}
+        <OwnedProperties
+          ownedProperties={ownedProperties}
+          currentProperties={currentProperties}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          propertiesPerPage={propertiesPerPage}
+        />
       </div>
     </div>
   );

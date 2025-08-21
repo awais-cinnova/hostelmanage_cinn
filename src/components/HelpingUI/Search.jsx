@@ -1,4 +1,3 @@
-import React from 'react'
 import { Input } from "@/components/ui/input"
 import Image from '../ui/image' // Assuming this is a valid image component
 

@@ -13,8 +13,8 @@ import { useNavigate } from "react-router-dom";
 export function TableDemo({ data, currentPage, rowsPerPage }) {
   const navigate = useNavigate();
 
-  // Use owners array from data prop
-  const owners = data?.owners || [];
+  // ✅ Directly use data as owners (it's already an array)
+  const owners = data || [];
 
   // Pagination calculations
   const start = (currentPage - 1) * rowsPerPage;

@@ -1,34 +1,38 @@
-import React, { useState } from 'react';
-import { users } from '../data/users';
-import { useNavigate } from 'react-router-dom';
-import { useAuthStore } from '../store/authStore';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuthStore } from "../store/authStore";
+import { useDataStore } from "../store/dataStore"; // ✅ pull users/owners from store
 
 export default function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const login = useAuthStore((state) => state.login);
+  const users = useDataStore((state) => state.owners); // ✅ get owners (and admins if stored here)
   const navigate = useNavigate();
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    // Find user in zustand-managed data
     const foundUser = users.find(
       (u) => u.email === email && u.password === password
     );
 
     if (!foundUser) {
-      setError('Invalid email or password');
+      setError("Invalid email or password");
       return;
     }
 
-    login(foundUser); // store user in Zustand
+    login(foundUser); // ✅ store user in authStore
 
     // Redirect based on role
-    if (foundUser.role === 'admin') {
-      navigate('/admin-dashboard');
-    } else if (foundUser.role === 'owner') {
-      navigate('/owner-dashboard');
+    if (foundUser.role === "admin") {
+      navigate("/admin-dashboard");
+    } else if (foundUser.role === "owner") {
+      navigate("/owner-dashboard");
+    } else {
+      navigate("/"); // fallback if role is unknown
     }
   };
 
