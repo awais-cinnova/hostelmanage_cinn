@@ -15,10 +15,10 @@ const HostelDetail = () => {
   const hostelRooms = rooms.filter((room) => room.hostelId === hostel.id);
 
   return (
-    <div className="p-6 flex flex-col" >
+    <div className="p-6 flex flex-col gap-3" >
 
         <div className="border rounded-md p-4 shadow hover:shadow-lg transition cursor-pointer" >
-            <HostelCard key={hostel.id} hostel={hostel} imgClass="xl:w-[60%]" className="flex flex-col xl:flex-row flex-1 gap-5 items-center text-4xl"/>
+            <HostelCard key={hostel.id} hostel={hostel} imgClass="xl:w-[60%]" className="flex flex-col xl:flex-row flex-1 gap-5 items-center text-5xl"/>
         </div>
      
       <h2 className="text-2xl font-semibold mb-3">Room Details</h2>
